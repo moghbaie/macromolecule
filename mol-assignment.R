@@ -10,6 +10,8 @@ proteinGroups <- read_delim("https://raw.githubusercontent.com/moghbaie/L1_CRC_I
 names(proteinGroups) 
 
 ### filtering out the contaminants and reverse sequence, selecting the LFQ intensity columns
+# used the protein IDs instead of the columns "Reverse" and "Potential contaminant" with "+" selection
+# the latter was not working for me
 proteinGroups_clean <- proteinGroups %>%
   filter(!str_detect(`Majority protein IDs`, "CON") &
            !str_detect(`Majority protein IDs`, "REV")) %>%
